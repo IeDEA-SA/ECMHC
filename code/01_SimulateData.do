@@ -4,7 +4,8 @@
 *** SIMULATE DATA
 	
 	* Working directory 
-		cd "C:/Users/haas/Desktop/ECMHC/data"
+		cd ..
+		cd data
 	
 	* Setup 
 		clear
