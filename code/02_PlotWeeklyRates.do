@@ -2,18 +2,9 @@
 	* andreas.haas@ispm.unibe.ch; andreas.d.haas@gmail.com
 
 *** PLOT WEEKLY CONTACT RATES  
-
-	* Working directory 
-		cd "C:/Users/haas/Desktop/ECMHC/data"
-
-	* Colors 
-		global blue "0 155 196"
-		global green "112 177 68"
-		global purple "161 130 188"
-		global red "185 23 70"
 		
 	* Dataset with weekly hospital admission and outpatient consultation rates
-		use weekly, clear
+		use "$data/weekly", clear
 				
 	* Loop over conditions & type of care 
 		foreach d in any org su smi dep anx oth sh alc {	
@@ -61,13 +52,16 @@
 		* Hospital admissions 
 			graph combine hos_any_rate hos_org_rate hos_su_rate hos_smi_rate hos_dep_rate hos_anx_rate hos_oth_rate hos_sh_rate hos_alc_rate , ///
 			col(3) xsize(10) ysize(13.3333) iscale(*.5) graphregion(color(white)) graphregion(margin(l=-1 r=-1 t=-1 b=-1)) name(hos_rate, replace) subtitle("Simulated data", color(red))
+			graph export "$figures/HOS_rates.pdf", as(pdf) name(hos_rate) replace
 			
 		* Outpatient care consultations 
 			graph combine opd_any_rate opd_org_rate opd_su_rate opd_smi_rate opd_dep_rate opd_anx_rate opd_oth_rate opd_sh_rate opd_alc_rate,  ///
 			col(3) xsize(10) ysize(13.3333) iscale(*.5) graphregion(color(white)) graphregion(margin(l=-1 r=-1 t=-1 b=-1)) name(opd_rate, replace) subtitle("Simulated data", color(red))
+			graph export "$figures/OPD_rates.pdf", as(pdf) name(opd_rate) replace
 			
 		* Any care 
 			graph combine any_any_rate any_org_rate any_su_rate any_smi_rate any_dep_rate any_anx_rate any_oth_rate any_sh_rate any_alc_rate, /// 
 			col(3) xsize(10) ysize(13.3333) iscale(*.5) graphregion(color(white)) graphregion(margin(l=-1 r=-1 t=-1 b=-1)) name(any_rate, replace) subtitle("Simulated data", color(red))
+			graph export "$figures/ANY_rates.pdf", as(pdf) name(any_rate) replace
 								
 	

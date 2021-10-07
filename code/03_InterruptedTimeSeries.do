@@ -2,26 +2,14 @@
 	* andreas.haas@ispm.unibe.ch; andreas.d.haas@gmail.com
 
 *** INTERRUPTED TIME SERIES ANALYSIS 
-
-	* Install packages 
-		*ssc install regsave
-		
-	* Working directory 
-		cd "C:/Users/haas/Desktop/ECMHC/data"
 				
 	* Generate empty dataset to stored resutls  
 		clear 
 		gen var = ""
-		save results, replace
-		
-	* Colors 
-		global blue "0 155 196"
-		global green "112 177 68"
-		global purple "161 130 188"
-		global red "185 23 70"
+		save "$data/results", replace
 		
 	* Dataset with weekly hospital admission and outpatient consultation rates
-		use weekly, clear
+		use "$data/weekly", clear
 		
 	* Loop over conditions & type of care 
 		foreach d in any org su smi dep anx oth sh alc {	
@@ -63,8 +51,8 @@
 				sort slope 
 				local step = est[1]
 				local slope =est[2] 
-				qui append using results
-				qui save results, replace 
+				qui append using "$data/results"
+				qui save "$data/results", replace 
 				restore 
 								
 			* Predict odds, transform to proportions with CIs 
@@ -107,14 +95,17 @@
 		* Hospital admissions 
 			graph combine hos_any_its hos_org_its hos_su_its hos_smi_its hos_dep_its hos_anx_its hos_oth_its hos_sh_its hos_alc_its, /// Hospital admissions 
 			col(3) xsize(10) ysize(13.3333) iscale(*.5) graphregion(color(white)) graphregion(margin(l=-1 r=-1 t=-1 b=-1)) name(hos_its, replace) subtitle("Simulated data", color(red))
+			graph export "$figures/HOS_ITS.pdf", as(pdf) name(hos_its) replace
 			
 		* Outpatient care consultations 
 			graph combine opd_any_its opd_org_its opd_su_its opd_smi_its opd_dep_its opd_anx_its opd_oth_its opd_sh_its opd_alc_its, /// Outpatient care consultations 
 			col(3) xsize(10) ysize(13.3333) iscale(*.5) graphregion(color(white)) graphregion(margin(l=-1 r=-1 t=-1 b=-1)) name(opd_its, replace) subtitle("Simulated data", color(red))
+			graph export "$figures/OPD_ITS.pdf", as(pdf) name(opd_its) replace
 				
 		* Any care  
 			graph combine any_any_its any_org_its any_su_its any_smi_its any_dep_its any_anx_its any_oth_its any_sh_its any_alc_its, /// Any care 
 			col(3) xsize(10) ysize(13.3333) iscale(*.5) graphregion(color(white)) graphregion(margin(l=-1 r=-1 t=-1 b=-1)) name(any_its, replace) subtitle("Simulated data", color(red))
+			graph export "$figures/ANY_ITS.pdf", as(pdf) name(any_its) replace
 
 	* Table with estimates 
 		

@@ -2,11 +2,7 @@
 	* andreas.haas@ispm.unibe.ch; andreas.d.haas@gmail.com
 	
 *** SIMULATE DATA
-	
-	* Working directory 
-		cd ..
-		cd data
-	
+		
 	* Setup 
 		clear
 		set obs 180
@@ -60,5 +56,5 @@
 		}
 		
 	* Save dataset with weekly hospital admission and outpatient consultation rates
-		save weekly, replace
+		save "$data/weekly", replace
 	
