@@ -52,6 +52,7 @@
 			* Percentage of the population with health care contact in week 
 				foreach s in opd hos any {
 					gen `s'_prc_`d' = `s'_`d'/den*100 
+					replace  `s'_`d' = round(`s'_`d')
 				}	
 		}
 		
