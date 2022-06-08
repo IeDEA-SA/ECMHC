@@ -2,6 +2,6 @@
 
 * Contributors: Andreas Haas, Anja Wettstein, Veronika Whitesell-Skrivankova
 * Correspondence: andreas.haas@ispm.unibe.ch
-* Acknowledgments: research design has been adopted from Mansfield et al Lancet DH 2020, DOI: 10.1016/S2589-7500(21)00017-0, see https://github.com/johntaz/COVID-Collateral/
+* Acknowledgments: the research design and statistical analysis plan has been adopted from Mansfield et al Lancet DH 2020, DOI: 10.1016/S2589-7500(21)00017-0, see https://github.com/johntaz/COVID-Collateral/
 
-Data cannot be shared for legal and ethical reasons. Simulated data and Stata code for the interrupted time series analysis are provided.
+Data cannot be made available online because of legal and ethical restrictions. Simulated data and Stata code for the interrupted time series analysis are provided in this repository. 
